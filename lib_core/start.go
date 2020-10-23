@@ -32,9 +32,9 @@ func Start(option *Options){
 	if AddKeyboardPass(file){
 		gologger.Infof(" 增加键盘顺序弱口令成功\n")
 	}
-	gologger.Infof(" 对结果进行去重\n")
-	if Uniq(file_path,option.file_name){
-		gologger.Infof(" 去重成功\n")
+	gologger.Infof(" 对结果进行去重、复杂度检测、长度筛选\n")
+	if Uniq(file_path,option.file_name,option){
+		gologger.Infof(" 去重、复杂度检测、长度筛选成功\n")
 	}
 
 }
