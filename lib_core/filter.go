@@ -47,7 +47,7 @@ func StringToInts(s string) (intSlice []int) {
 	return
 }
 
-//参考bit4woo表哥的实现方式，采用asiic
+//参考bit4woo表哥的实现方式，采用ascii判断
 func CheckSpecialChar(password string) bool {
 	pass_to_ascii := StringToInts(password)
 	for _, v := range pass_to_ascii {
