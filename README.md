@@ -7,6 +7,7 @@
 Customized password dictionary generator
 
 How to use 
+
 download release
 
 command line: ./pwdgenerator -d key
