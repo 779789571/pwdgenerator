@@ -9,7 +9,7 @@ import (
 //处理常规密码生成
 func AddCommonPass(file *os.File) bool {
 
-	res := FileLoad(common_passFile, 1000000)
+	res := FileLoad(common_passFile, 1024)
 	//f ,err := os.OpenFile(commonpassFile,os.O_APPEND,0666)
 	//check(err)
 	//defer f.Close()
@@ -35,7 +35,10 @@ func AddRulePass(file *os.File, key string) bool {
 
 		if len(result_list) != 0 {
 			for _, pass := range result_list {
-				pass = pass + "\n"
+				pass = strings.Replace(pass, " ", "", -1)
+				pass = strings.Replace(pass, "\n", "", -1)
+				pass = strings.Replace(pass, "\r", "", -1)
+				pass = pass + "\r\n"
 				file.WriteString(pass)
 			}
 		}
@@ -78,7 +81,6 @@ func RuleGotPass(key string, rule []string) []string {
 				//}
 				tmp = []string{}
 
-
 			}
 
 		} else {
@@ -105,10 +107,10 @@ func CheckFormat(k string) bool {
 func GetListByFormat(k string, key string) []string {
 	var special_letter = []string{"!", "@", "#", "$", "%", "*"}
 	var year = []string{"2015", "2016", "2017", "2018", "2019", "2020"}
-	china_name := FileLoad(china_nameFile, 10000)
-	keyboard_walk := FileLoad(keyboard_walkFile, 10000)
-	common_number := FileLoad(common_numberFile, 10000)
-	common_pass := FileLoad(common_passFile, 10000)
+	china_name := FileLoad(china_nameFile, 1024)
+	keyboard_walk := FileLoad(keyboard_walkFile, 1024)
+	common_number := FileLoad(common_numberFile, 1024)
+	common_pass := FileLoad(common_passFile, 1024)
 	var list = []string{}
 	switch k {
 	case "key":
@@ -139,7 +141,7 @@ func GetListByFormat(k string, key string) []string {
 	return list
 }
 func AddKeyboardPass(file *os.File) bool{
-	res := FileLoad(keyboard_pass, 1000000)
+	res := FileLoad(keyboard_pass, 1024)
 	//f ,err := os.OpenFile(commonpassFile,os.O_APPEND,0666)
 	//check(err)
 	//defer f.Close()

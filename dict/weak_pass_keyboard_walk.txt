@@ -304,10 +304,10 @@ p4ssw0rd!
 P4ssw0rd1
 P4ssw0rd!
 qwertyuiop[]\
-asdfghjkl;��
+asdfghjkl;
 zxcvbnm,./
 /.,mnbvcxz
-��;lkjhgfdsa
+;lkjhgfdsa
 \][poiuytrewq
 qwertyuiop[]
 1qaz2wsx!@

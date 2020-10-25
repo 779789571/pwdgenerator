@@ -2,6 +2,7 @@ package lib_core
 
 import (
 	"bufio"
+	"io"
 	"os"
 	"pwdgenerator/gologger"
 )
@@ -20,13 +21,19 @@ func FileLoad(file_path string , bufSize int) string{
 	r := bufio.NewReader(file)
 	b := make([]byte, bufSize)
 	for {
-		_, err := r.Read(b)
+		n, err := r.Read(b)
+		chunk = append(chunk,b[:n]...)
 		if err != nil {
-			//gologger.Printf("Error reading file:", err)
-			break
+			if err == io.EOF {
+				err = nil
+				break
+			} else {
+				gologger.Errorf("%s",err)
+				os.Exit(-1)
+			}
 		}
 		//res = string(b)
-		chunk = append(chunk,b...)
+
 
 	}
 	res = string(chunk)

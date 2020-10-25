@@ -5,7 +5,7 @@ import (
 	"pwdgenerator/gologger"
 )
 
-const version = "0.1"
+const version = "0.9.1"
 const banner = `
 
                  .___                                         __                
